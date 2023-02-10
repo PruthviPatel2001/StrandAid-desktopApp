@@ -8,7 +8,7 @@ import DroneDetails from "../components/HomeComponents/DroneDetails";
 const Home = () => {
   const [DroneData, setDroneData] = useState([]);
   const [Loader, setLoader] = useState(true);
-  const [SelectedDroneId, setSelectedDroneId] = useState();
+  const [SelectedDroneId, setSelectedDroneId] = useState(1);
   const [SelectedDrone, setSelectedDrone] = useState()
 
   useEffect(() => {
@@ -40,8 +40,8 @@ const Home = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-2">
-        <div className="border p-12">
+      <div className="grid grid-cols-2 pt-20">
+        <div className=" p-12">
           {Loader ? (
             <h1>Loading...</h1>
           ) : (
@@ -55,7 +55,7 @@ const Home = () => {
             </>
           )}
         </div>
-        <div className="border p-12">world</div>
+        <div className=" p-12">world</div>
       </div>
     </div>
   );
