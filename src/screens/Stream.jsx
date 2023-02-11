@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import DroneList from "../components/HomeComponents/DroneList";
 import axios from "axios";
 import OT, { Publisher } from '@opentok/client'
+import VideoStream from "../components/VideoStream";
 
 const Stream = () => {
   const [SelectedDroneId, setSelectedDroneId] = useState(1);
@@ -13,7 +14,6 @@ const Stream = () => {
   const [DroneData, setDroneData] = useState();
   const [data, setData] = useState();
 
-  const videoRef = useRef(null);
 
   useEffect(() => {
     const getDroneData = async () => {
@@ -70,17 +70,7 @@ const Stream = () => {
     //   ssc.close();
     // }
 
-    const video = videoRef.current
-
-    const updateVideo = () => {
-      video.src = 'http://localhost:5000/video';
-      console.log(video.src);
-      video.addEventListener('loadmetdata', () => {
-        video.play();
-      })
-    }
-
-    updateVideo();
+   
   }, []);
 
 
@@ -94,11 +84,11 @@ const Stream = () => {
       </div>
       
         
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <img src="/images/stream.png" className="rounded-xl"/>
-      </div>
+      </div> */}
+      <VideoStream />
     </div>
-    <video autoPlay ref={videoRef}></video>
     </> 
   );
 };

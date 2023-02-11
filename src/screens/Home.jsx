@@ -4,6 +4,7 @@ import axios from "axios";
 import DroneList from "../components/HomeComponents/DroneList";
 import DroneDetails from "../components/HomeComponents/DroneDetails";
 import {API} from "../global/url"
+import MapView from "../components/MapView";
 
 const containerStyle = {
   width: '400px',
@@ -70,7 +71,7 @@ const Home = () => {
 
 
   return (
-    <div>
+    <div style={{width:"80vw",height:"80vw"}}>
       <div className="grid grid-cols-5 pt-20">
         <div className=" p-12  col-span-3">
           {Loader ? (
@@ -89,8 +90,14 @@ const Home = () => {
           )}
         </div>
         <div className=" p-12">
-
+        {/* <iframe src="https://www.google.com/maps/d/embed?mid=1-fHuUrZWV9uqabKF9SUrkKMfEjw&hl=en_US&ehbc=2E312F" width="500" height="480"></iframe> */}
+        
+     
         </div>
+      </div>
+      <div className="ml-28" style={{width:"100vw",height:"50vh"}}>
+
+      <MapView />
       </div>
     </div>
   );
