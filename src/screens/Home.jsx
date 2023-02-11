@@ -90,14 +90,10 @@ const Home = () => {
           )}
         </div>
         <div className=" p-12">
-        {/* <iframe src="https://www.google.com/maps/d/embed?mid=1-fHuUrZWV9uqabKF9SUrkKMfEjw&hl=en_US&ehbc=2E312F" width="500" height="480"></iframe> */}
+        <iframe src="https://www.google.com/maps/d/embed?mid=1-fHuUrZWV9uqabKF9SUrkKMfEjw&hl=en_US&ehbc=2E312F" width="500" height="480"></iframe>
         
      
         </div>
-      </div>
-      <div className="ml-28" style={{width:"100vw",height:"50vh"}}>
-
-      <MapView />
       </div>
     </div>
   );
