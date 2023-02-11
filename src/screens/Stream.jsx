@@ -29,6 +29,9 @@ const Stream = () => {
       <div className=" mt-4">
         <DroneList data={DroneData} setSelectedDroneId={setSelectedDroneId} />
       </div>
+      <div className="mt-8">
+        <img src="/images/stream.png" className="rounded-xl"/>
+      </div>
     </div>
   );
 };

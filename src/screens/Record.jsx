@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import RecordCards from "../components/Records/RecordCards";
 import axios from "axios";
+import { API } from "../global/url";
 
 const Record = () => {
   const [RecordsData, setRecordsData] = useState();
@@ -10,7 +11,7 @@ const Record = () => {
   useEffect(() => {
     const getRecords = async () => {
       const res = await axios.get(
-        "https://strandaid-api.vercel.app/drone_record"
+        `${API}/drone_record`
       );
 
       console.log("Records", res.data);
