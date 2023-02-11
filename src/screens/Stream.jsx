@@ -94,6 +94,9 @@ const Stream = () => {
       </div>
       
         
+      <div className="mt-8">
+        <img src="/images/stream.png" className="rounded-xl"/>
+      </div>
     </div>
     <video autoPlay ref={videoRef}></video>
     </> 

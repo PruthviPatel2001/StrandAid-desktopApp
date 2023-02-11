@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Route, Routes, useNavigation } from "react-router-dom";
-import Record from "./Record";
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import axios from "axios";
 import DroneList from "../components/HomeComponents/DroneList";
 import DroneDetails from "../components/HomeComponents/DroneDetails";
+import {API} from "../global/url"
+
+const containerStyle = {
+  width: '400px',
+  height: '400px'
+};
+
+const center = {
+  lat: -3.745,
+  lng: -38.523
+};
 
 const Home = () => {
   const [DroneData, setDroneData] = useState([]);
@@ -13,7 +23,7 @@ const Home = () => {
 
   useEffect(() => {
     const getDroneData = async () => {
-      const res = await axios.get("https://strandaid-api.vercel.app/all");
+      const res = await axios.get(`${API}/all`);
 
       res && setLoader(false);
 
@@ -27,7 +37,7 @@ const Home = () => {
     const getIndividualDrone = async () => {
       setLoader(true);
       const res = await axios.get(
-        `https://strandaid-api.vercel.app/list?id=${SelectedDroneId}`
+        `${API}/list?id=${SelectedDroneId}`
       );
       res && setLoader(false);
 
@@ -37,13 +47,36 @@ const Home = () => {
     SelectedDroneId && getIndividualDrone();
   }, [SelectedDroneId]);
 
+  // ---- Google Map ---- 
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "YOUR_API_KEY"
+  })
+
+  const [map, setMap] = React.useState(null)
+
+  const onLoad = React.useCallback(function callback(map) {
+    // This is just an example of getting and using the map instance!!! don't just blindly copy!
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+
 
   return (
     <div>
-      <div className="grid grid-cols-2 pt-20">
-        <div className=" p-12">
+      <div className="grid grid-cols-5 pt-20">
+        <div className=" p-12  col-span-3">
           {Loader ? (
-            <h1>Loading...</h1>
+            <div className="flex justify-center items-center">
+              <h1 className="text-[#ffffff] text-3xl font-bold">Loading...</h1>
+            </div>
           ) : (
             <>
             
@@ -55,7 +88,9 @@ const Home = () => {
             </>
           )}
         </div>
-        <div className=" p-12">world</div>
+        <div className=" p-12">
+
+        </div>
       </div>
     </div>
   );
