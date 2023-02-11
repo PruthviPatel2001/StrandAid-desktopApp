@@ -26,6 +26,8 @@ const Home = () => {
     const getDroneData = async () => {
       const res = await axios.get(`${API}/all`);
 
+      console.log(res)
+
       res && setLoader(false);
 
       setDroneData(res.data);
@@ -71,8 +73,11 @@ const Home = () => {
 
 
   return (
-    <div style={{width:"80vw",height:"80vw"}}>
+    <div >
       <div className="grid grid-cols-5 pt-20">
+        <div className="">
+          {/* ---- dummy ----  */}
+        </div>
         <div className=" p-12  col-span-3">
           {Loader ? (
             <div className="flex justify-center items-center">
@@ -89,12 +94,17 @@ const Home = () => {
             </>
           )}
         </div>
-        <div className=" p-12">
-        <iframe src="https://www.google.com/maps/d/embed?mid=1-fHuUrZWV9uqabKF9SUrkKMfEjw&hl=en_US&ehbc=2E312F" width="500" height="480"></iframe>
+        <div className=" ">
+        {/* <iframe src="https://www.google.com/maps/d/embed?mid=1-fHuUrZWV9uqabKF9SUrkKMfEjw&hl=en_US&ehbc=2E312F" width="500" height="480"></iframe> */}
         
      
         </div>
+        <div className="">
+        <MapView />
+          
+        </div>
       </div>
+      <MapView />
     </div>
   );
 };
