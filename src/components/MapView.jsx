@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import 'ol/ol.css';
-import Map from 'ol/Map';
-import View from 'ol/View';
-import Feature from 'ol/Feature';
-import Point from 'ol/geom/Point';
-import { fromLonLat } from 'ol/proj';
-import { Icon, Style } from 'ol/style';
-import VectorLayer from 'ol/layer/Vector';
-import VectorSource from 'ol/source/Vector';
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
+import React, { useEffect, useRef, useState } from "react";
+import "ol/ol.css";
+import Map from "ol/Map";
+import View from "ol/View";
+import Feature from "ol/Feature";
+import Point from "ol/geom/Point";
+import { fromLonLat } from "ol/proj";
+import { Icon, Style } from "ol/style";
+import VectorLayer from "ol/layer/Vector";
+import VectorSource from "ol/source/Vector";
+import TileLayer from "ol/layer/Tile";
+import OSM from "ol/source/OSM";
 
 function OpenLayersMap() {
   const mapRef = useRef(null);
@@ -27,8 +27,8 @@ function OpenLayersMap() {
           }),
         ],
         view: new View({
-          center: fromLonLat([9.19, 45.46]),
-          zoom: 5,
+          center: fromLonLat([70.8022, 22.3039]),
+          zoom: 10,
         }),
       });
       setMap(newMap);
@@ -41,21 +41,24 @@ function OpenLayersMap() {
   useEffect(() => {
     if (map) {
       const marker1 = new Feature({
-        geometry: new Point(fromLonLat([-77.0369, 38.9072])),
+        geometry: new Point(fromLonLat([70.8197142, 22.2347302])),
+      
       });
       const marker2 = new Feature({
-        geometry: new Point(fromLonLat([-73.935242, 40.73061])),
+        geometry: new Point(fromLonLat([70.7347, 22.4035])),
+        zoom:10
       });
       const marker3 = new Feature({
-        geometry: new Point(fromLonLat([-0.1278, 51.5074])),
+        geometry: new Point(fromLonLat([70.61, 22.2314])),
       });
       const marker4 = new Feature({
-        geometry: new Point(fromLonLat([139.6917, 35.6895])),
+        geometry: new Point(fromLonLat([70.8705, 22.25133])),
+       
       });
 
       const markerStyle = new Style({
         image: new Icon({
-          src: 'https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/32x32/Circle_Red.png',
+          src: "https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/32x32/Circle_Red.png",
         }),
       });
 
@@ -76,7 +79,13 @@ function OpenLayersMap() {
     }
   }, [map]);
 
-  return <div ref={mapRef} className='map-container h-full' style={{width:'80vw'}}/>;
+  return (
+    <div
+      ref={mapRef}
+      className="map-container ml-32"
+      style={{ width: "80vw", height: "500px" }}
+    />
+  );
 }
 
 export default OpenLayersMap;

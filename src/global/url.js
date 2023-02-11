@@ -1,1 +1,1 @@
-export const API="https://strandaidapi.azurewebsites.net/"
+export const API="https://strandaid-api.vercel.app"
